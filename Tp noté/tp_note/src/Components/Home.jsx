@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from '../Assets/logo.svg';
-import '../Style/App.css';
+import photo from '../Assets/photo.jpg';
+import '../Style/home.css';
 
 function Home() {
 
@@ -9,12 +10,17 @@ function Home() {
 
   const [titleResult, setTitleResult] = useState({
     Type : "Title",
-    Text : "Bienvenue sur mon Site",
+    Text : "Bienvenue sur mon Portfolio",
+    Lang : "FRA"
+  }) // Texte par défaut en Français
+  const [subTitleResult, setSubTitleResult] = useState({
+    Type : "SubTitle",
+    Text : "À propos de moi",
     Lang : "FRA"
   }) // Texte par défaut en Français
   const [descResult, setDescResult] = useState({
     Type : "Description",
-    Text : "SHEEEESH",
+    Text : "Je m'appelle Jérémy Courby. Diplômé d'un BTS SIO (Services Informatiques aux Organisations) dans l'option SLAM (Solutions Logicielles et Applications Métiers) qui consiste à concevoir des programmes / sites WEB destinés à la gestion d'une organisation et d'un diplôme BAC+3 : Bachelor Développement Web et Mobile, j'étudie actuellement à Esimed pour le diplôme BAC+5 : Expert en développement logiciel.",//"Étudiant à Esimed, une école d'informatique, je me nomme Jérémy Courby",
     Lang : "FRA"
   }) // Texte par défaut en Français
 
@@ -38,41 +44,40 @@ function Home() {
 
     useEffect(() => {
 
-      fetch(`https://api/home/title=${langueInput}`)
+      fetch(`https://api/home/title?lang=${langueInput}`)
       .then(response => response.json())
       .then(data => {
         setTitleResult(data.Text);
       })
       .catch(error => {
-        //setTitleResult([{text : "Bienvenue sur mon Site"}]); // Sans API
-        setTitleResult([{text : "Pas de données"}]); // Avec API
+        setTitleResult(titleResult);
       });
 
-      fetch(`https://api/home/desc=${langueInput}`)
+      fetch(`https://api/home/subtitle?lang=${langueInput}`)
+      .then(response => response.json())
+      .then(data => {
+        setSubTitleResult(data.Text);
+      })
+      .catch(error => {
+        setSubTitleResult(subTitleResult);
+      });
+
+      fetch(`https://api/home/desc?lang=${langueInput}`)
       .then(response => response.json())
       .then(data => {
         setDescResult(data.Text);
       })
       .catch(error => {
-        //setDescResult([{text : "Bienvenue sur mon Site"}]); // Sans API
-        setDescResult([{text : "Pas de données"}]); // Avec API
+        setDescResult(descResult);
       });
     })
 
   return (
-    <div className="navbar navbar-expand-lg bg-body-secondary d-flex justify-content-center" style={{height: "1080px"}}>
-      <div>
-        <header>
-          <div style={{height: 300}}>
-            {/* {homeResult.map(element => {return element.text; })} */}
-            {titleResult.Text}
-          </div>
-          <div style={{height: 300}}>
-            {/* {homeResult.map(element => {return element.text; })} */}
-            {descResult.Text}
-          </div>
-        </header>
-      </div>
+    <div className="bg-body-secondary align-items-center" style={{minHeight: "1000px", paddingTop: "8%"}}>
+        <div className='center'><h1>{titleResult.Text}</h1></div>
+        <div className='center'><img src={photo} className="img-rectangle"></img></div>
+        <div className='center border-top pt-4 w-25 '><h3>{subTitleResult.Text}</h3></div>
+        <div className='center'>{descResult.Text}</div>
     </div>
   );
 }
