@@ -3,11 +3,18 @@ import Footer from './Footer';
 import NavBar from './NavBar';
 import Home from './Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 
 function App() {
+  const [theme, setTheme] = useState("dark")
+
+  function changeColor(){
+    theme === "dark"?setTheme("light"):setTheme("dark")
+  }
+
   return (
-    <div class="bg-body-tertiary" data-bs-theme='dark'>
-        <NavBar />
+    <div className="bg-body-tertiary" data-bs-theme={theme}>
+        <NavBar changeColor={changeColor} />
         <BrowserRouter>
             <Routes>
                 <Route index element={<Home />} />
