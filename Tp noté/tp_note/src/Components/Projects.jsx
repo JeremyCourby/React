@@ -3,7 +3,8 @@ import '../Style/App.css';
 
 function Projects() {
   return (
-    <div className="navbar navbar-expand-lg bg-body-secondary d-flex justify-content-center" style={{height: "1080px"}}></div>
+    <div className="bg-body-secondary text-body align-items-center h-100" style={{ paddingTop: "3%" }}>
+    </div>
   );
 }
 
