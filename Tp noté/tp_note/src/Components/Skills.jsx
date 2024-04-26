@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import logo from '../Assets/logo.svg';
 import photo from '../Assets/photo.png';
 import '../Style/home.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Skills(props) {
 
@@ -10,48 +11,10 @@ function Skills(props) {
     Text: "Compétences",
     Lang: "FRA"
   }) // Texte par défaut en Français
-  const [subTitleResult, setSubTitleResult] = useState({
-    Type: "SubTitle",
-    Text: "À propos de moi",
-    Lang: "FRA"
-  })
-  const [subTitleResult2, setSubTitleResult2] = useState({
-    Type: "SubTitle2",
-    Text: "Expériences",
-    Lang: "FRA"
-  }) // Texte par défaut en Français
-  const [descResult, setDescResult] = useState({
-    Type: "Description",
-    Text: "Je m'appelle Jérémy Courby. Diplômé d'un BTS SIO (Services Informatiques aux Organisations) dans l'option SLAM (Solutions Logicielles et Applications Métiers) qui consiste à concevoir des programmes / sites WEB destinés à la gestion d'une organisation et d'un diplôme BAC+3 : Bachelor Développement Web et Mobile, j'étudie actuellement à Esimed pour le diplôme BAC+5 : Expert en développement logiciel.",
-    Lang: "FRA"
-  }) // Texte par défaut en Français
-  const [descResult2, setDescResult2] = useState({
-    Type: "Description2",
-    Text: "Les Etudes : BAC S, BTS SIO, ESIMED BAC+3, ESIMED BAC+5 \n Entreprises : Stages dans l'association Avilab, Alternance dans l'entreprise LSI",
-    Lang: "FRA"
-  }) // Texte par défaut en Français
 
-  const [skillResult, setSkillResult] = useState([{
-    Type: "Skills",
-    Title: "Compétence 1",
-    Desc: "Compétence 1",
-    id: "1",
-    Lang: "FRA"
-  },
-  {
-    Type: "Skills",
-    Title: "Compétence 2",
-    Desc: "Compétence 2",
-    id: "2",
-    Lang: "FRA"
-  },
-  {
-    Type: "Skills",
-    Title: "Compétence 3",
-    Desc: "Compétence 3",
-    id: "3",
-    Lang: "FRA"
-  }]) // Texte par défaut en Français
+  const [skillResult, setSkillResult] = useState([{}])
+  const [skillAppResult, setSkillAppResult] = useState([{}])
+  const [skillBDDResult, setSkillBDDResult] = useState([{}])
 
   useEffect(() => {
     if (props.langue === "FRA") {
@@ -60,167 +23,429 @@ function Skills(props) {
         Text: "Compétences",
         Lang: "FRA"
       })
-      setSubTitleResult({
-        Type: "SubTitle",
-        Text: "À propos de moi",
-        Lang: "FRA"
-      })
-      setSubTitleResult2({
-        Type: "SubTitle2",
-        Text: "Expériences",
-        Lang: "FRA"
-      })
-      setDescResult({
-        Type: "Description",
-        Text: "Je m'appelle Jérémy Courby. Diplômé d'un BTS SIO (Services Informatiques aux Organisations) dans l'option SLAM (Solutions Logicielles et Applications Métiers) qui consiste à concevoir des programmes / sites WEB destinés à la gestion d'une organisation et d'un diplôme BAC+3 : Bachelor Développement Web et Mobile, j'étudie actuellement à Esimed pour le diplôme BAC+5 : Expert en développement logiciel.",
-        Lang: "FRA"
-      })
-      setDescResult2({
-        Type: "Description2",
-        Text: "Les Etudes : BAC S, BTS SIO, ESIMED BAC+3, ESIMED BAC+5 \n Entreprises : Stages dans l'association Avilab, Alternance dans l'entreprise LSI",
-        Lang: "FRA"
-      })
-      setSkillResult([{
-        Type: "Skills",
-        Title: "Compétence 1",
-        Desc: "Compétence 1",
-        id: "1",
-        Lang: "FRA"
-      },
-      {
-        Type: "Skills",
-        Title: "Compétence 2",
-        Desc: "Compétence 2",
-        id: "2",
-        Lang: "FRA"
-      },
-      {
-        Type: "Skills",
-        Title: "Compétence 3",
-        Desc: "Compétence 3",
-        id: "3",
-        Lang: "FRA"
-      },
-      {
-        Type: "Skills",
-        Title: "Compétence 3",
-        Desc: "Compétence 3",
-        id: "3",
-        Lang: "FRA"
-      },
-      {
-        Type: "Skills",
-        Title: "Compétence 3",
-        Desc: "Compétence 3",
-        id: "3",
-        Lang: "FRA"
-      },
-      {
-        Type: "Skills",
-        Title: "Compétence 3",
-        Desc: "Compétence 3",
-        id: "3",
-        Lang: "FRA"
-      }])
+      setSkillResult([
+        {
+          Type: "Skills",
+          Title: "JavaScript",
+          Desc: "fa-brands fa-js",
+          id: "1",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "NodeJS",
+          Desc: "fa-brands fa-node",
+          id: "2",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "HTML",
+          Desc: "fa-brands fa-html5",
+          id: "3",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "CSS",
+          Desc: "fa-brands fa-css3-alt",
+          id: "4",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "PHP",
+          Desc: "fa-brands fa-php",
+          id: "5",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "SQL",
+          Desc: "fa-solid fa-database",
+          id: "6",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Python",
+          Desc: "fa-brands fa-python",
+          id: "7",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "C#",
+          Desc: "fa-solid fa-c",
+          id: "8",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Java",
+          Desc: "fa-brands fa-java",
+          id: "9",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "WLangage",
+          Desc: "fa-solid fa-w",
+          id: "10",
+          Lang: "FRA"
+        }])
+      setSkillAppResult([
+        {
+          Type: "Skills",
+          Title: "VS 2019",
+          id: "11",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "VS Code",
+          id: "12",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Android Studio",
+          id: "13",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "WAMP",
+          id: "14",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "LAMP",
+          id: "15",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "LEMP",
+          id: "16",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "WordPress",
+          id: "17",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Filezilla",
+          id: "18",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "GitHub",
+          id: "19",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Gdevelop 5",
+          id: "20",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Godot",
+          id: "21",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Windev",
+          id: "22",
+          Lang: "FRA"
+        }])
+      setSkillBDDResult([
+        {
+          Type: "Skills",
+          Title: "MySQL",
+          id: "23",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "MariaDB",
+          id: "24",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "SQL serveur",
+          id: "25",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Access",
+          id: "26",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "HFSQL",
+          id: "27",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "PostgreSQL",
+          id: "28",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "Oracle",
+          id: "29",
+          Lang: "FRA"
+        }])
     } else {
       setTitleResult({
         Type: "Title",
         Text: "Skills",
         Lang: "ENG"
       })
-      setSubTitleResult({
-        Type: "SubTitle",
-        Text: "About Me",
-        Lang: "ENG"
-      })
-      setSubTitleResult2({
-        Type: "SubTitle2",
-        Text: "Experiences",
-        Lang: "ENG"
-      })
-      setDescResult({
-        Type: "Description",
-        Text: "My name is Jérémy Courby. Graduate of a BTS SIO (IT Services for Organizations) in the SLAM option (Software Solutions and Business Applications) which consists of designing programs / WEB sites intended for the management of an organization and a BAC+3 diploma: Bachelor Web and Mobile Development, I am currently studying at Esimed for the BAC+5 diploma: Expert in software development.",
-        Lang: "ENG"
-      })
-      setDescResult2({
-        Type: "Description2",
-        Text: "Studies: BAC S, BTS SIO, ESIMED BAC+3, ESIMED BAC+5 \n Companies: Internships in the Avilab association, Work-study program in the LSI company",
-        Lang: "ENG"
-      })
-      setSkillResult([{
-        Type: "Skills",
-        Title: "Skills 1",
-        Desc: "Skills 1",
-        id: "1",
-        Lang: "ENG"
-      },
-      {
-        Type: "Skills",
-        Title: "Skills 2",
-        Desc: "Skills 2",
-        id: "2",
-        Lang: "ENG"
-      },
-      {
-        Type: "Skills",
-        Title: "Skills 3",
-        Desc: "Skills 3",
-        id: "3",
-        Lang: "ENG"
-      }])
+      setSkillResult([
+        {
+          Type: "Skills",
+          Title: "JavaScript",
+          Desc: "fa-brands fa-js",
+          id: "1",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "NodeJS",
+          Desc: "fa-brands fa-node",
+          id: "2",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "HTML",
+          Desc: "fa-brands fa-html5",
+          id: "3",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "CSS",
+          Desc: "fa-brands fa-css3-alt",
+          id: "4",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "PHP",
+          Desc: "fa-brands fa-php",
+          id: "5",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "SQL",
+          Desc: "fa-solid fa-database",
+          id: "6",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Python",
+          Desc: "fa-brands fa-python",
+          id: "7",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "C#",
+          Desc: "fa-solid fa-c",
+          id: "8",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Java",
+          Desc: "fa-brands fa-java",
+          id: "9",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "WLangage",
+          Desc: "fa-solid fa-w",
+          id: "10",
+          Lang: "ENG"
+        }])
+      setSkillAppResult([
+        {
+          Type: "Skills",
+          Title: "VS 2019",
+          id: "11",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "VS Code",
+          id: "12",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Android Studio",
+          id: "13",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "WAMP",
+          id: "14",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "LAMP",
+          id: "15",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "LEMP",
+          id: "16",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "WordPress",
+          id: "17",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Filezilla",
+          id: "18",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "GitHub",
+          id: "19",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Gdevelop 5",
+          id: "20",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Godot",
+          id: "21",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Windev",
+          id: "22",
+          Lang: "ENG"
+        }])
+      setSkillBDDResult([
+        {
+          Type: "Skills",
+          Title: "MySQL",
+          id: "23",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "MariaDB",
+          id: "24",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "SQL serveur",
+          id: "25",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Access",
+          id: "26",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "HFSQL",
+          id: "27",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "PostgreSQL",
+          id: "28",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "Oracle",
+          id: "29",
+          Lang: "ENG"
+        }])
     }
   }, [props.langue])
 
-
-
-
-  // useEffect(() => {
-
-  //   fetch(`https://api/home/title?lang=${props.langue}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     setTitleResult(data.Text);
-  //   })
-  //   .catch(error => {
-  //     setTitleResult(titleResult);
-  //   });
-
-  //   fetch(`https://api/home/subtitle?lang=${props.langue}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     setSubTitleResult(data.Text);
-  //   })
-  //   .catch(error => {
-  //     setSubTitleResult(subTitleResult);
-  //   });
-
-  //   fetch(`https://api/home/desc?lang=${props.langue}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     setDescResult(data.Text);
-  //   })
-  //   .catch(error => {
-  //     setDescResult(descResult);
-  //   });
-  // })
-
-  return (
-    <div className="bg-body-secondary text-body align-items-center h-100" style={{ paddingTop: "3%" }}>
-      <div className='center'><h1>{titleResult.Text}</h1></div>
-      <div>
-        {[...skillResult].map((elem) => {
+  return (<>
+    <div className="text-body d-flex flex-column align-items-center h-100" style={{ paddingTop: "100px" }}>
+      <div><h1>Compétences</h1></div>
+      <div className='mt-5 border-top border-2 w-75'></div>
+      <div className='mt-4'><h2>Languages</h2></div>
+      <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
+        {skillResult.map((elem) => {
           return (
-            <div className='mx-4'>
-              <div className='border-top border-3 pt-4'><h3>{elem.Title}</h3></div>
-              <div className='m-4'>{elem.Desc}</div>
+            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column align-items-center zoom' style={{ height: "180px", width: "200px" }}>
+              <div><FontAwesomeIcon icon={elem.Desc} size='xl' /></div>
+              <div><h3>{elem.Title}</h3></div>
             </div>
           )
         })}
-        
+      </div>
+      <div className='mt-4 border-top border-2 w-75'></div>
+      <div className='mt-4'><h2>Logiciels et applications</h2></div>
+      <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
+        {skillAppResult.map((elem) => {
+          return (
+            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center' style={{ height: "180px", width: "200px" }}>
+              {elem.Title}
+            </div>
+          )
+        })}
+      </div>
+      <div className='mt-4 border-top border-2 w-75'></div>
+      <div className='mt-4'><h2>Gestion des données</h2></div>
+      <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
+        {skillBDDResult.map((elem) => {
+          return (
+            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center' style={{ height: "180px", width: "200px" }}>
+              {elem.Title}
+            </div>
+          )
+        })}
       </div>
     </div>
-  );
+
+  </>);
 }
 
 export default Skills;

@@ -60,12 +60,38 @@ function NavBar(props) {
         }
     }, [props.langue])
 
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [navColor, setNavColor] = useState("transparent");
+
+    const handleScroll = () => {
+        const position = window.scrollY;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition > 20) {
+            setNavColor("rgba(var(--bs-tertiary-bg-rgb))");
+        } else {
+            setNavColor("transparent");
+        }
+    }, [scrollPosition]);
+
     return (<>
         {/* NavBar bootstrap */}
-        <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <nav className="navbar navbar-expand-lg fixed-top border-bottom border-2" style={{
+            backgroundColor: navColor,
+            transition: "background-color 0.3s ease"
+        }}>
             <div className="container-fluid">
                 <div className="dropdown mx-3">
-                    <button className="bg-body-tertiary btn dropdownlangue" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="btn dropdownlangue" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src={props.langue === "FRA" ? FRA : ENG} className="imgLangue"></img>
                     </button>
                     <ul className="dropdown-menu">
