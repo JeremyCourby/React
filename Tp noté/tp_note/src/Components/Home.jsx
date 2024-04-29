@@ -5,9 +5,10 @@ import '../Style/home.css';
 
 function Home(props) {
 
-  const [titleResult, setTitleResult] = useState({}) // Texte par défaut en Français
+  const [titleResult, setTitleResult] = useState({})
+  const [photoResult, setPhotoResult] = useState({})
   const [aboutResult, setAboutResult] = useState({})
-  const [expResult, setExpResult] = useState({}) // Texte par défaut en Français
+  const [expResult, setExpResult] = useState({})
 
   useEffect(() => {
     if (props.langue === "FRA") {
@@ -15,6 +16,9 @@ function Home(props) {
         Type: "Title",
         Text: "Bienvenue sur mon Portfolio",
         Lang: "FRA"
+      })
+      setPhotoResult({
+        url: photo
       })
       setAboutResult({
         Type: "À propos de moi",
@@ -31,6 +35,9 @@ function Home(props) {
         Type: "Title",
         Text: "Welcome to my Portfolio",
         Lang: "ENG"
+      })
+      setPhotoResult({
+        url: photo
       })
       setAboutResult({
         Type: "About Me",
@@ -77,8 +84,8 @@ function Home(props) {
   return (
     <div className=" text-body align-items-center h-100" style={{paddingTop: "100px"}}>
       <div className='d-flex justify-content-center typewriter pt-4'><h1>{titleResult.Text}</h1></div>
-      <div className='d-flex justify-content-center pt-4'><img src={photo} className="img-rectangle border border-info border-4 rounded-circle"></img></div>
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex justify-content-center pt-4'><img className="img-rectangle border border-info border-4 rounded-circle aff-up-img" style={{minWidth:"300px", minHeight:"300px" }} src={photoResult.url} ></img></div>
+      <div className='d-flex justify-content-center aff-up'>
         <div className='d-flex flex-column justify-content-start align-items-center pt-4' style={{ width: "40%" }}>
           <div className=' border-top border-3 pt-4'><h3>{aboutResult.Type}</h3></div>
           <div className='m-4'>{aboutResult.Text}</div>

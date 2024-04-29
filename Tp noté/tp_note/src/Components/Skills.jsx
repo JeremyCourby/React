@@ -13,14 +13,32 @@ function Skills(props) {
   }) // Texte par défaut en Français
 
   const [skillResult, setSkillResult] = useState([{}])
+  const [skillLangLib, setLangLib] = useState([{}])
+  const [skillAppLib, setSkillAppLib] = useState([{}])
+  const [skillBDDLib, setSkillBDDLib] = useState([{}])
   const [skillAppResult, setSkillAppResult] = useState([{}])
   const [skillBDDResult, setSkillBDDResult] = useState([{}])
 
   useEffect(() => {
     if (props.langue === "FRA") {
       setTitleResult({
-        Type: "Title",
+        Type: "TitleComp",
         Text: "Compétences",
+        Lang: "FRA"
+      })
+      setLangLib({
+        Type: "TitleLang",
+        Text: "Langages",
+        Lang: "FRA"
+      })
+      setSkillAppLib({
+        Type: "TitleApp",
+        Text: "Logiciels et applications",
+        Lang: "FRA"
+      })
+      setSkillBDDLib({
+        Type: "TitleApp",
+        Text: "Gestion des données",
         Lang: "FRA"
       })
       setSkillResult([
@@ -36,6 +54,13 @@ function Skills(props) {
           Title: "NodeJS",
           Desc: "fa-brands fa-node",
           id: "2",
+          Lang: "FRA"
+        },
+        {
+          Type: "Skills",
+          Title: "REACT",
+          Desc: "fa-brands fa-react",
+          id: "30",
           Lang: "FRA"
         },
         {
@@ -216,6 +241,21 @@ function Skills(props) {
         Text: "Skills",
         Lang: "ENG"
       })
+      setLangLib({
+        Type: "Title",
+        Text: "Languages",
+        Lang: "ENG"
+      })
+      setSkillAppLib({
+        Type: "TitleApp",
+        Text: "Software and applications",
+        Lang: "ENG"
+      })
+      setSkillBDDLib({
+        Type: "TitleApp",
+        Text: "Data managment",
+        Lang: "ENG"
+      })
       setSkillResult([
         {
           Type: "Skills",
@@ -229,6 +269,13 @@ function Skills(props) {
           Title: "NodeJS",
           Desc: "fa-brands fa-node",
           id: "2",
+          Lang: "ENG"
+        },
+        {
+          Type: "Skills",
+          Title: "REACT",
+          Desc: "fa-brands fa-react",
+          id: "30",
           Lang: "ENG"
         },
         {
@@ -408,13 +455,14 @@ function Skills(props) {
 
   return (<>
     <div className="text-body d-flex flex-column align-items-center h-100" style={{ paddingTop: "100px" }}>
-      <div><h1>Compétences</h1></div>
+      <div><h1 className='aff-up'>{titleResult.Text}</h1></div>
       <div className='mt-5 border-top border-2 w-75'></div>
-      <div className='mt-4'><h2>Languages</h2></div>
+      <div className='mt-4 aff-up'><h2>{skillLangLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
-        {skillResult.map((elem) => {
+        {skillResult.map((elem, index) => {
+          console.log(index)
           return (
-            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column align-items-center zoom' style={{ height: "180px", width: "200px" }}>
+            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column align-items-center zoom carte' style={{ height: "180px", width: "200px" }}>
               <div><FontAwesomeIcon icon={elem.Desc} size='xl' /></div>
               <div><h3>{elem.Title}</h3></div>
             </div>
@@ -422,22 +470,22 @@ function Skills(props) {
         })}
       </div>
       <div className='mt-4 border-top border-2 w-75'></div>
-      <div className='mt-4'><h2>Logiciels et applications</h2></div>
+      <div className='mt-4 aff-up'><h2>{skillAppLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
-        {skillAppResult.map((elem) => {
+        {skillAppResult.map((elem, index) => {
           return (
-            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center' style={{ height: "180px", width: "200px" }}>
+            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center carte' style={{ height: "180px", width: "200px" }}>
               {elem.Title}
             </div>
           )
         })}
       </div>
       <div className='mt-4 border-top border-2 w-75'></div>
-      <div className='mt-4'><h2>Gestion des données</h2></div>
+      <div className='mt-4 aff-up'><h2>{skillBDDLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
-        {skillBDDResult.map((elem) => {
+        {skillBDDResult.map((elem, index) => {
           return (
-            <div className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center' style={{ height: "180px", width: "200px" }}>
+            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center carte' style={{ height: "180px", width: "200px" }}>
               {elem.Title}
             </div>
           )

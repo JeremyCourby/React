@@ -77,17 +77,17 @@ function NavBar(props) {
 
     useEffect(() => {
         if (scrollPosition > 20) {
-            setNavColor("rgba(var(--bs-tertiary-bg-rgb))");
+            setNavColor("blur(10px)");
         } else {
-            setNavColor("transparent");
+            setNavColor("blur(0px)");
         }
     }, [scrollPosition]);
 
     return (<>
         {/* NavBar bootstrap */}
         <nav className="navbar navbar-expand-lg fixed-top border-bottom border-2" style={{
-            backgroundColor: navColor,
-            transition: "background-color 0.3s ease"
+            transition: "background-color 0.3s ease",
+            backdropFilter: navColor
         }}>
             <div className="container-fluid">
                 <div className="dropdown mx-3">
