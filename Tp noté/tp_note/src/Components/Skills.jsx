@@ -460,7 +460,6 @@ function Skills(props) {
       <div className='mt-4 aff-up'><h2>{skillLangLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
         {skillResult.map((elem, index) => {
-          console.log(index)
           return (
             <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column align-items-center zoom carte' style={{ height: "180px", width: "200px" }}>
               <div><FontAwesomeIcon icon={elem.Desc} size='xl' /></div>

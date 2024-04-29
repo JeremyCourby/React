@@ -24,6 +24,12 @@ function NavBar(props) {
         Lang: "FRA"
     }) // Texte par défaut en Français
 
+    const [buttonBlogResult, setButtonBlogResult] = useState({
+        Type: "Button",
+        Text: "Blog",
+        Lang: "FRA"
+    }) // Texte par défaut en Français
+
     useEffect(() => {
         if (props.langue === "FRA") {
             setButtonHomeResult({
@@ -41,6 +47,11 @@ function NavBar(props) {
                 Text: "Projets",
                 Lang: "FRA"
             })
+            setButtonBlogResult({
+                Type: "Button",
+                Text: "Blog",
+                Lang: "FRA"
+            })
         } else {
             setButtonHomeResult({
                 Type: "Button",
@@ -55,6 +66,11 @@ function NavBar(props) {
             setButtonProjectsResult({
                 Type: "Button",
                 Text: "Projects",
+                Lang: "ENG"
+            })
+            setButtonBlogResult({
+                Type: "Button",
+                Text: "Blog",
                 Lang: "ENG"
             })
         }
@@ -112,6 +128,9 @@ function NavBar(props) {
                         </li>
                         <li className="nav-item">
                             <a href='/projects' className='nav-link'><button className="nav-link active border-start px-4 border-2" aria-current="page"><FontAwesomeIcon icon="fa-solid fa-list-check" className='me-3' />{buttonProjectsResult.Text}</button></a>
+                        </li>
+                        <li className="nav-item">
+                            <a href='/blog' className='nav-link'><button className="nav-link active border-start px-4 border-2" aria-current="page"><FontAwesomeIcon icon="fa-solid fa-blog" className='me-3' />{buttonBlogResult.Text}</button></a>
                         </li>
                     </ul>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
