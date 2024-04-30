@@ -160,7 +160,35 @@
 
 .cadre_scroll{
   overflow:auto;
-  scrollbar-color: rgb(0, 0, 0) transparent;
+  scrollbar-color: -- transparent;
   scrollbar-width: thin;
-  max-height: 85vh;
+  max-height: 83vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+}
+
+.img-rectangle {
+  width: 15%;
+}
+
+button:hover {
+  transform: scale(1.1); /* Augmente légèrement la taille du bouton au survol */
+}
+
+.postDetails{
+  transform: translateX(20px);
+  animation: fadeInRight 2s forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translateX(-30px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

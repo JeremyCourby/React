@@ -9,6 +9,7 @@ import Projects from './Projects';
 import fond from '../Assets/fond.jpg';
 import fondblanc from '../Assets/fondblanc.jpg';
 import Blog from './Blog';
+import Auth from './Auth';
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("Theme"))
@@ -42,6 +43,7 @@ function App() {
             <Route path="/skills" element={<Skills langue={langueIMG} />} />
             <Route path="/projects" element={<Projects langue={langueIMG} />} />
             <Route path="/blog" element={<Blog langue={langueIMG} />} />
+            <Route path="/auth" element={<Auth langue={langueIMG} />} />
           </Routes>
         </BrowserRouter>
       </div>

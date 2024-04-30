@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import logo from '../Assets/logo.svg';
 import photo from '../Assets/photo.png';
-import '../Style/home.css';
 
 function Home(props) {
 
