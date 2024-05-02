@@ -3,13 +3,13 @@ import Footer from './Footer';
 import NavBar from './NavBar';
 import Home from './Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Skills from './Skills';
-import Projects from './Projects';
+import Projects from './Projects/Projects';
 import fond from '../Assets/fond.jpg';
 import fondblanc from '../Assets/fondblanc.jpg';
-import Blog from './Blog';
-import Auth from './Auth';
+import Blog from './Blog/Blog';
+import Auth from './Blog/Auth';
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("Theme"))
@@ -42,7 +42,7 @@ function App() {
             <Route index element={<Home langue={langueIMG} />} />
             <Route path="/skills" element={<Skills langue={langueIMG} />} />
             <Route path="/projects" element={<Projects langue={langueIMG} />} />
-            <Route path="/blog" element={<Blog langue={langueIMG} />} />
+            <Route path="/blog/*" element={<Blog langue={langueIMG} />} />
             <Route path="/auth" element={<Auth langue={langueIMG} />} />
           </Routes>
         </BrowserRouter>

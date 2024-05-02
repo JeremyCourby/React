@@ -22,6 +22,7 @@ function TP3() {
   return (<>
       <div className="App">
         <header className="App-header">
+          <textarea value={"test"}></textarea>
           <div><input value={ searchInput } onChange={(event) => setSearchInput(event.target.value)}></input><button onClick={search}>Rechercher</button></div>
           <div style={{height: 300}}><img style={{width: 400}} src={ searchResult }/></div>
         </header>

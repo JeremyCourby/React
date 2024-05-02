@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useParams } from 'react-router-dom';
 
-function Blog(props) {
+function PostView(props) {
 
   const [blogResult, setBlogResult] = useState([])
   const [postResult, setPostResult] = useState([])
   const [commentResult, setCommentResult] = useState([])
-  const [showCommentsResult, setShowCommentsResult] = useState('hidden')
 
   const [commentLibResult, setCommentLibResult] = useState({}) // Texte par défaut en Français
-
   const [tokenResult, setTokenResult] = useState(localStorage.getItem("Token"))
+  const [isAuthResult, setIsAuthResult] = useState(true)
 
   useEffect(() => {
-    if(tokenResult == null){
+    showComment(props.id)
+    setTokenResult(localStorage.getItem("Token"))
+    if (tokenResult === "" || tokenResult == "") {
       window.location.href = '/auth';
+    } else {
+      checkauth()
     }
-  }, [])
+  }, [props.id])
 
   useEffect(() => {
     if (props.langue === "FRA") {
@@ -59,7 +63,6 @@ function Blog(props) {
         setCommentResult({ error: `Aucun Commentaire : ${error}` });
       });
     showPost(id)
-    setShowCommentsResult('visible')
   }
 
   function showPost(id) {
@@ -68,53 +71,64 @@ function Blog(props) {
       .then(res => res.json())
       .then(data => {
         setPostResult(data);
+        setUpdateInput(data.body)
       })
       .catch(error => {
         setPostResult({ error: `Post innexistant : ${error}` });
       });
     setAnimationActive(true)
-    setShowCommentsResult('visible')
   }
 
-  function updatePost(id) {
-    fetch(`https://dummyjson.com/posts/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        title: 'I think I should shift to the moon',
-      })
-    })
-      .then(res => res.json())
-      .then(console.log);
-  }
+  // function updatePost(id) {
+  //   fetch(`https://dummyjson.com/posts/${id}`, {
+  //     method: 'PUT',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       body: updateInput,
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(console.log);
+  // }
 
-  function deletePost(id) {
-    fetch(`https://dummyjson.com/posts/${id}`, {
-      method: 'DELETE',
+  // function deletePost(id) {
+  //   fetch(`https://dummyjson.com/posts/${id}`, {
+  //     method: 'DELETE',
+  //   })
+  //     .then(res => res.json())
+  //     .then(console.log);
+  // }
+
+  function checkauth() {
+    /* providing token in bearer */
+    fetch('https://dummyjson.com/auth/me', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${tokenResult}`,
+      },
     })
       .then(res => res.json())
-      .then(console.log);
+      .then(data => {
+        if(data.name === "TokenExpiredError" || data.name === "JsonWebTokenError"){
+          localStorage.setItem("Token", "")
+          window.location.href = '/auth';
+        }
+      });
   }
 
   const [animationActive, setAnimationActive] = useState(false);
+  const [updateInput, setUpdateInput] = useState('')
 
   return (<>
-    <div className="text-body align-items-center h-100 w-50" style={{ marginTop: "100px" }}>
-      {blogResult.map((post, index) => {
-        return (<>
-          <div key={index} className="post bg-body-secondary m-4 carte" onClick={() => showComment(post.id)}>
-            <h3 className="post-title">{post.title} <button className="btn" type="button" style={{ float: 'right' }}><FontAwesomeIcon icon="fa-solid fa-caret-right" /></button></h3>
-            <p className="post-body">{post.body}</p>
-            <p className="post-meta"><FontAwesomeIcon icon="fa-solid fa-heart" style={{ color: "#ff0000", }} /> {post.reactions}</p>
-          </div>
-        </>)
-      })}
-    </div>
-    <div onAnimationEnd={() => {setAnimationActive(false)}} className={"text-body border-start align-items-center h-100 w-50", animationActive ? "postDetails" : ""} style={{ marginTop: "100px", position: 'fixed', marginLeft: '50%', visibility: showCommentsResult}}>
-      <div className="text-body post2 bg-body-secondary m-4 cadre_scroll">
+    <div onAnimationEnd={() => { setAnimationActive(false) }} className={ animationActive && "postDetails" } style={{ marginTop: "100px", position: 'fixed', marginLeft: '50%', width:'47%' }}>
+      <div className="text-body post2 bg-body-secondary m-4 cadre_scroll ms-4 w-100">
         <h2 className="post-title mb-5">{postResult.title} <p className="post-meta" style={{ float: 'right' }}><FontAwesomeIcon icon="fa-solid fa-heart" style={{ color: "#ff0000", }} /> {postResult.reactions}</p></h2>
-        <p className="post-body">{postResult.body}</p>
-        <h3>{commentLibResult.Text}</h3>
+        <textarea className="form-group form-control" rows="5" value={updateInput} onChange={(event) => setUpdateInput(event.target.value)}></textarea>
+        <div style={{ float: 'right' }}>
+          <button className="btn" type="button" onClick={() => props.updatePost(postResult.id, updateInput)}><FontAwesomeIcon className="m-2" icon="fa-solid fa-pen" /></button>
+          <button className="btn" type="button" onClick={() => props.deletePost(postResult.id)}><FontAwesomeIcon className="m-2" icon="fa-solid fa-trash" /></button>
+        </div>
+        <h3 className='mt-5 border-top border-2 pt-'>{commentLibResult.Text}</h3>
         {commentResult.map((comment) => {
           return (
             <div className="post bg-body-secondary m-4">
@@ -122,13 +136,9 @@ function Blog(props) {
             </div>
           )
         })}
-        <div style={{ float: 'right' }}>
-          <button className="btn" type="button"  onClick={() => updatePost(postResult.id)}><FontAwesomeIcon className="m-2" icon="fa-solid fa-pen" /></button>
-          <button className="btn" type="button"  onClick={() => deletePost(postResult.id)}><FontAwesomeIcon className="m-2" icon="fa-solid fa-trash" /></button>
-        </div>
       </div>
     </div>
   </>);
 }
 
-export default Blog;
+export default PostView;
