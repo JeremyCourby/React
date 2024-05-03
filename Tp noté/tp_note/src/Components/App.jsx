@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import Home from './Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import Skills from './Skills';
+import Skills from './Skills/Skills';
 import Projects from './Projects/Projects';
 import fond from '../Assets/fond.jpg';
 import fondblanc from '../Assets/fondblanc.jpg';

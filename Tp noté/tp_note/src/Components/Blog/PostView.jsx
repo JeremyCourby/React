@@ -129,7 +129,7 @@ function PostView(props) {
           <button className="btn" type="button" onClick={() => props.deletePost(postResult.id)}><FontAwesomeIcon className="m-2" icon="fa-solid fa-trash" /></button>
         </div>
         <h3 className='mt-5 border-top border-2 pt-'>{commentLibResult.Text}</h3>
-        {commentResult.map((comment) => {
+        {commentResult && commentResult.map((comment) => {
           return (
             <div className="post bg-body-secondary m-4">
               <p className="post-body">{comment.body}</p>

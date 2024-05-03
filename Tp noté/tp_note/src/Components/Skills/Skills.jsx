@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SkillsCard from './SkillsCard';
+import SkillsCardImg from './SkillsCardImg';
 
 function Skills(props) {
 
@@ -457,34 +459,21 @@ function Skills(props) {
       <div className='mt-4 aff-up'><h2>{skillLangLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
         {skillResult.map((elem, index) => {
-          return (
-            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column align-items-center zoom carte' style={{ height: "180px", width: "200px" }}>
-              <div><FontAwesomeIcon icon={elem.Desc} size='xl' /></div>
-              <div><h3>{elem.Title}</h3></div>
-            </div>
-          )
+          return (<SkillsCardImg key={index} title={elem.Title} img={elem.Desc}></SkillsCardImg>)
         })}
       </div>
       <div className='mt-4 border-top border-2 w-75'></div>
       <div className='mt-4 aff-up'><h2>{skillAppLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
         {skillAppResult.map((elem, index) => {
-          return (
-            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center carte' style={{ height: "180px", width: "200px" }}>
-              {elem.Title}
-            </div>
-          )
+          return (<SkillsCard key={index} title={elem.Title}> </SkillsCard>)
         })}
       </div>
       <div className='mt-4 border-top border-2 w-75'></div>
       <div className='mt-4 aff-up'><h2>{skillBDDLib.Text}</h2></div>
       <div className='d-flex flex-wrap flex-row text-tertiary justify-content-center'>
         {skillBDDResult.map((elem, index) => {
-          return (
-            <div key={index} className='bg-body-secondary border m-4 p-4 border-3 mx-4 d-flex flex-column justify-content-center align-items-center zoom2 text-center carte' style={{ height: "180px", width: "200px" }}>
-              {elem.Title}
-            </div>
-          )
+          return (<SkillsCard key={index} title={elem.Title}> </SkillsCard>)
         })}
       </div>
     </div>
